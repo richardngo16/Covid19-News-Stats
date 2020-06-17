@@ -1,8 +1,16 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from "react";
+import logo from "./logo.svg";
+import "./App.css";
 
 function App() {
+  useEffect(() => {
+    async function fetchAPIevents() {
+      const response = await fetch("https://covid19.mathdro.id/api");
+      const data = await response.json();
+      console.log(data);
+    }
+    fetchAPIevents();
+  });
   return (
     <div className="App">
       <header className="App-header">
