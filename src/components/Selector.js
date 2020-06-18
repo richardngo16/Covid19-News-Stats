@@ -1,35 +1,45 @@
 import Select from 'react-select'
-import React, { useEffect } from "react";
-import { STORAGE_CONSTANTS, ENDPOINT } from './constants'
-import localForage from 'localforage'
+import React, { useEffect, useState } from "react";
+import { useSetRecoilState } from 'recoil'
+import { selectedCountryStore } from '../stores/Store'
+import { STORAGE_CONSTANTS, ENDPOINT } from '../constants'
+import { retrieveFromStorage, writeToStorage } from '../utils/persistance'
 
 function Selector() {
+    const [countries, setCountries] = useState([])
+    const setSelectedCountry = useSetRecoilState(selectedCountryStore)
     useEffect(() => {
+        // We want to make a network requests in case the country list changes for the API
+        const fetchAllCountries = async () => {
+            const countriesInStorage = await retrieveFromStorage(STORAGE_CONSTANTS.COUNTRIES)
+            if (!countriesInStorage) {
+                // no countries stored, make network call
+                const response = await fetch(ENDPOINT.COUNTRIES);
+                const data = await response.json();
+                const countriesList = await writeToStorage(STORAGE_CONSTANTS.COUNTRIES, mapCountryData(data.countries))
+                setCountries(countriesList)
+            } else {
+                // country list already exists in storage
+                if (countries.length === 0) {
+                    setCountries(countriesInStorage)
+                }
+            }
+        }
+        fetchAllCountries()
+    }, [countries.length]);
 
-        fetchAllCountries();
-    });
-    return (<React.Fragment>
-        <Select />
-    </React.Fragment>)
-}
-
-const fetchAllCountries = async () => {
-    const countriesInStorage = await localForage.getItem(STORAGE_CONSTANTS.COUNTRIES)
-    if (!countriesInStorage) {
-        // no countries stored, make network call
-        const response = await fetch(ENDPOINT.COUNTRIES);
-        const data = await response.json();
-        await setCountriesInStorage(mapCountryData(data.countries))
-    } else {
-        // country list already exists in storage
-        console.log(countriesInStorage)
+    const handleCountrySelect = country => {
+        setSelectedCountry(country)
     }
+    return (<div style={{ width: '100%' }}>
+        <Select options={countries} onChange={handleCountrySelect} />
+    </div>)
 }
+
+// Helper Functions
 const mapCountryData = (countries) => {
     return countries.map(country => {
         return { label: country.name, value: country.iso2 };
     })
 }
-const setCountriesInStorage = async (data) => {
-    localForage.setItem(STORAGE_CONSTANTS.COUNTRIES, data)
-}
+export default Selector

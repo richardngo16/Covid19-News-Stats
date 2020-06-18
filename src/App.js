@@ -1,13 +1,16 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./App.css";
-
-
-
+import { RecoilRoot } from 'recoil';
+import Selector from './components/Selector';
+import LeftDrawer from './components/LeftDrawer';
 function App() {
   return (
-    <div className="App">
-
-    </div>
+    <RecoilRoot>
+      <div className="App" style={{ display: 'flex' }}>
+        <LeftDrawer />
+        <Selector />
+      </div>
+    </RecoilRoot>
   );
 }
 
