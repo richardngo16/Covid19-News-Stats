@@ -2,7 +2,7 @@ import Select from 'react-select'
 import React, { useEffect, useState } from "react";
 import { useSetRecoilState } from 'recoil'
 import { selectedCountryStore } from '../stores/Store'
-import { STORAGE_CONSTANTS, ENDPOINT } from '../constants'
+import { STORAGE_CONSTANTS, ENDPOINT } from '../utils/constants'
 import { retrieveFromStorage, writeToStorage } from '../utils/persistance'
 
 function Selector() {
@@ -31,9 +31,9 @@ function Selector() {
     const handleCountrySelect = country => {
         setSelectedCountry(country)
     }
-    return (<div style={{ width: '100%' }}>
+    return (<React.Fragment>
         <Select options={countries} onChange={handleCountrySelect} />
-    </div>)
+    </React.Fragment>)
 }
 
 // Helper Functions

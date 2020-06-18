@@ -26,7 +26,7 @@ function LeftDrawer() {
                 classes={{
                     paper: classes.drawerPaper,
                 }}>
-                <div> {country.label} </div>
+                {country && <div> {country.label} </div>}
             </Drawer>
         </React.Fragment>
     )
