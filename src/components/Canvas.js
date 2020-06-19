@@ -1,24 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useRecoilValue } from 'recoil';
 import { selectedCountryStore } from '../stores/Store'
 import { ENDPOINT } from '../utils/constants'
 
 function Canvas() {
     const country = useRecoilValue(selectedCountryStore)
-    const [pageData, setPageData] = useState(null)
-    useEffect(() => {
-        const fetchCountryData = async () => {
-            const response = await fetch(`${ENDPOINT.COUNTRIES}/${country.value}`)
-            const data = await response.json()
-            setPageData(data)
-        }
-        if (country) {
-            fetchCountryData()
-        }
-    }, [country])
     return (<div>
-        Hello World
-        {pageData && JSON.stringify(pageData)}
+        {country && <img alt="og_image" src={`${ENDPOINT.COUNTRIES}/${country.value}/og`} />}
     </div>)
 }
 
