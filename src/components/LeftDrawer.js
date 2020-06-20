@@ -5,7 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { selectedCountryStore } from '../stores/Store'
 import { ENDPOINT } from '../utils/constants'
 import NewsCards from './NewsCards'
-const drawerWidth = '300px'
+const drawerWidth = '400px'
 const useStyles = makeStyles((theme) => ({
     drawer: {
         width: drawerWidth,
