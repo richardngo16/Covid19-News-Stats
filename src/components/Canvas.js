@@ -6,6 +6,7 @@ import { ENDPOINT } from '../utils/constants'
 function Canvas() {
     const country = useRecoilValue(selectedCountryStore)
     return (<div>
+        {!country && <img alt="global_og_image" src={ENDPOINT.GLOBAL} />}
         {country && <img alt="og_image" src={`${ENDPOINT.COUNTRIES}/${country.value}/og`} />}
     </div>)
 }

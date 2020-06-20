@@ -31,9 +31,9 @@ function Selector() {
     const handleCountrySelect = country => {
         setSelectedCountry(country)
     }
-    return (<React.Fragment>
+    return (<div>
         <Select options={countries} onChange={handleCountrySelect} />
-    </React.Fragment>)
+    </div>)
 }
 
 // Helper Functions
