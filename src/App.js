@@ -9,7 +9,7 @@ function App() {
     <RecoilRoot>
       <div className="App" style={{ display: 'flex' }}>
         <LeftDrawer />
-        <div style={{ width: '100%' }}>
+        <div style={{ height: '100%', width: '100%' }}>
           <Selector />
           <Canvas />
         </div>
