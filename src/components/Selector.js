@@ -29,7 +29,9 @@ function Selector() {
     }, [countries.length]);
 
     const handleCountrySelect = country => {
-        setSelectedCountry(country)
+        setSelectedCountry((oldSelectedCountry) => {
+            return country
+        })
     }
     return (<div style={{ margin: '15px' }}>
         <Select options={countries} onChange={handleCountrySelect} />

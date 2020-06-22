@@ -18,7 +18,7 @@ function Canvas() {
     const displayNewsIframe = (newsLink) => {
         return (
             <React.Fragment>
-                <Alert severity="info" action={           <Button onClick={(e) => {
+                <Alert severity="info" action={<Button onClick={(e) => {
                         setCanvasNews(undefined)
                     }}>Close</Button>}> You are in an iframe! Close it to go back
          
@@ -28,7 +28,7 @@ function Canvas() {
         )
     }
     return (
-        <div style={{ width: '100%', height: '100%' }}>
+        <div className={'canvas'}>
             {!canvasNews && displayCovidImage(country)}
             {canvasNews && displayNewsIframe(canvasNews)}
         </div>

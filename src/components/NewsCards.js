@@ -15,7 +15,7 @@ function NewsCards(props) {
                 <Card>
                     <CardActionArea onClick={
                         (e) => {
-                            setCanvasNews(item.url)
+                            setCanvasNews((oldUrlLink) => item.url)
                         }
                     }>
                         <CardMedia style={{ height: '150px' }} image={item.urlToImage} />

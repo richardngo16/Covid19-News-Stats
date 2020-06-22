@@ -7,7 +7,7 @@ import Canvas from './components/Canvas';
 function App() {
   return (
     <RecoilRoot>
-      <div className="App" style={{ display: 'flex' }}>
+      <div className="App">
         <LeftDrawer />
         <div style={{ height: '100%', width: '100%' }}>
           <Selector />
