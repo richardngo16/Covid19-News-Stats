@@ -1,6 +1,6 @@
 Simple React Project to play with Recoil(state management)!
-Grabs Covid19 Data and Plots it on a Graph.
-Also Aggregates News Accordingly to Country.
+Displays Covid19 Stats by Country.
+Also Aggregates Covid19 News Accordingly to Country.
 
 Recoil: https://recoiljs.org/
-API: https://github.com/mathdroid/covid-19-api
+API: https://github.com/mathdroid/covid-19-api, https://newsapi.org/
