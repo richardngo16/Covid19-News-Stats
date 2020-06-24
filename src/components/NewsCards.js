@@ -15,7 +15,9 @@ function NewsCards(props) {
                 <Card>
                     <CardActionArea onClick={
                         (e) => {
-                            setCanvasNews((oldUrlLink) => item.url)
+                            // boolean, string and number values are immutable.
+                            // should be okay to set
+                            setCanvasNews(item.url)
                         }
                     }>
                         <CardMedia style={{ height: '150px' }} image={item.urlToImage} />

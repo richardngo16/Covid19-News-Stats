@@ -30,7 +30,7 @@ function Selector() {
 
     const handleCountrySelect = country => {
         setSelectedCountry((oldSelectedCountry) => {
-            return country
+            return { ...oldSelectedCountry, label: country.label, value: country.value }
         })
     }
     return (<div style={{ margin: '15px' }}>

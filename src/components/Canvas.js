@@ -19,7 +19,7 @@ function Canvas() {
         return (
             <React.Fragment>
                 <Alert severity="info" action={<Button onClick={(e) => {
-                        setCanvasNews(undefined)
+                        setCanvasNews(null)
                     }}>Close</Button>}> You are in an iframe! Close it to go back
          
                 </Alert>
